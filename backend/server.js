@@ -10,11 +10,7 @@ const MONGO_URI = "mongodb://localhost:27017/productdb";
 const PORT = 5000;
 
 const app = express();
-
-app.use(cors({
-  origin: 'https://ecommerce-1front.onrender.com',  // allow your frontend
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json())
 
 app.use('/products',productRoutes);
