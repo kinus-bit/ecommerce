@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
 
-const API = 'https://ecommerce-first-otfc.onrender.com';
+const API = 'https://ecommerce-es8a.onrender.com';
 
 export default function App(){
   const [products,setProducts] = useState([]);
