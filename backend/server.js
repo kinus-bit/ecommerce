@@ -11,8 +11,7 @@ const PORT = 6000;
 
 const app = express();
 app.use(cors({
-  origin: ['https://ecommerce-frontted.onrender.com'], // Allow local frontend for now
-  credentials: true
+  origin: ['*'], // Allow local frontend for now
 }));
 app.use(express.json())
 
