@@ -11,7 +11,7 @@ const PORT = 6000;
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5174'], // Allow local frontend for now
+  origin: ['http://localhost:5173'], // Allow local frontend for now
   credentials: true
 }));
 app.use(express.json())
