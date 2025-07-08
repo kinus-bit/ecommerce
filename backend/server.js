@@ -11,7 +11,8 @@ const PORT = 6000;
 
 const app = express();
 app.use(cors({
-  origin: ['*'], // Allow local frontend for now
+  origin: 'https://ecommerce-orcin-ten.vercel.app',
+  credentials: true
 }));
 app.use(express.json())
 
