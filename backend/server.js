@@ -11,7 +11,7 @@ const PORT = 6000;
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173','https://ecommerce-frontted.onrender.com'], // Allow local frontend for now
+  origin: ['https://ecommerce-frontted.onrender.com'], // Allow local frontend for now
   credentials: true
 }));
 app.use(express.json())
