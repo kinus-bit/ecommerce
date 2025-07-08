@@ -7,7 +7,7 @@ const productRoutes = require('./routes/productRoutes');
 
 //connecting to mongodb
 const MONGO_URI = "mongodb://localhost:27017/productdb";
-const PORT = 5000;
+const PORT = 6000;
 
 const app = express();
 app.use(cors());
