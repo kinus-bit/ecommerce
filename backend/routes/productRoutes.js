@@ -17,7 +17,7 @@ router.post('/',async(req,res) =>{
 router.get('/',async(req,res) =>{
     const product = await Product.find();
     res.send(product);
-})
+});
 
 module.exports = router;
 

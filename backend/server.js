@@ -24,8 +24,13 @@ mongoose.connect(MONGO_URI,{
 }).then(() => console.log('MongoDB connected successfully,well done!'))
 .catch(error => console.error('MongoDB error:',error));
 
+app.get('/', (req, res) => {
+  res.send('Backend is up and running on Render 🚀');
+});
+
 app.listen(PORT,() =>{
     console.log(`server is running on http://localhost:${PORT}`);
 });
+
 
 
