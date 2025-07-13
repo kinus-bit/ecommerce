@@ -18,10 +18,6 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('MongoDB connected successfully,well done!'))
 .catch(error => console.error('MongoDB error:',error));
 
-app.get('/', (req, res) => {
-  res.send('Backend is up and running on Render 🚀');
-});
-
 
 const PORT = process.env.PORT || 6000;
 
