@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
 
-const API = 'https://ecommerce-backend-e5vw.onrender.com/products';
+const API = import.meta.env.VITE_API_URL;
 
 export default function App(){
   const [products,setProducts] = useState([]);
