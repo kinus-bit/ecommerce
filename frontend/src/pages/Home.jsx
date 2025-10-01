@@ -9,8 +9,9 @@ export default function Home() {
   const [displayedItems, setDisplayedItems] = useState([]);
 
   const load = async () => {
-      const res = await API.get("/all");
+      const res = await API.get("/products/all");
       setDisplayedItems(res.data);
+      
     };
   
     useEffect(() => {
@@ -34,7 +35,7 @@ export default function Home() {
                 <CardContent className="p-0">
                   <img
                     src={item.productUrl}
-                    className="h-80 w-full object-cover rounded-md"
+                    className="h-80 w-full object-cover object-center rounded-md"
                   ></img>
                 </CardContent>
               </Card>
