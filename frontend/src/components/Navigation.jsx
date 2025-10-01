@@ -5,7 +5,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import { Button } from '@/components/ui/Button';
+import { Button } from './ui/button';
 
 export default function Navigation() {
   return (
