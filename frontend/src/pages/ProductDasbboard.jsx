@@ -1,22 +1,54 @@
 import { React } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Items from "@/utility/Items";
+import API from "../services/api";
+import { FadeLoader } from "react-spinners";
 
 export default function AdminProduct() {
-  const [displayedItems, setDisplayedItems] = useState(Items);
+  const [displayedItems, setDisplayedItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  //loading items from database
+  const load = async (req, res) => {
+    try {
+      setLoading(true);
+      const res = await API.get("/products/all");
+      setDisplayedItems(res.data);
+      setAllItems(res.data);
+    } catch (error) {
+      setError("Failed to fetch products");
+    }
+    finally {
+      setLoading(false);
+    }
+  }; 
+
+  //fire them after loading the page
+  useEffect(() => {
+    load();
+  }, []);
+
+  //handle searching 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     if (query) {
-      const filteredList = Items.filter((item) =>
+      const filteredList = allItems.filter((item) =>
         item.productName.toLowerCase().includes(query)
       );
-      setDisplayedItems(filteredList);
+      if (filteredList.length > 0) {
+        setDisplayedItems(filteredList);
+        setError("");
+      } else {
+        setDisplayedItems([]);
+        setError("404 - NOT FOUND");
+      }
     } else {
-      setDisplayedItems(Items);
+      setDisplayedItems(allItems);
+      setError("")
     }
   };
 
@@ -41,28 +73,32 @@ export default function AdminProduct() {
 
       <div>
         <div className="flex  flex-wrap space-x-6 justify-center">
-          {displayedItems.length > 0 ? (
-            displayedItems.map((item) => (
-              <div key={item.id}>
-                <Card className="flex h-90 w-80 p-0 mb-4">
-                  <CardContent className="p-0">
-                    <img
-                      src={item.productUrl}
-                      className="h-55 w-full object-cover rounded-md"
-                    ></img>
-                  </CardContent>
-                  <CardFooter className="flex flex-col">
-                    <p>{item.productName}</p>
-                    <p>${item.productPrice}</p>
-                    <Button>see product</Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            ))
-          ) : (
-            <p className="mt-8 text-lg text-red-500">product not found</p>
-            
-          )}
+          {loading ? (<FadeLoader />) :
+            error ? (<h2 className="text-red-500 text-2xl">
+              {error}</h2>) :
+              displayedItems.length > 0 ? (
+                displayedItems.map((item) => (
+                  <div key={item._id}>
+                    <Card className="flex h-90 w-80 p-0 mb-4">
+                      <CardContent className="p-0">
+                        <img
+                          src={item.productUrl}
+                          className="h-55 w-full object-cover rounded-md"
+                        ></img>
+                      </CardContent>
+                      <CardFooter className="flex flex-col">
+                        <p>{item.productName}</p>
+                        <p>${item.productPrice}</p>
+                        <Button>see product</Button>
+                      </CardFooter>
+                    </Card>
+                  </div>
+                ))
+              ) : (
+                <p className="mt-8 text-lg text-red-500">NO PRODUCTS AVAILABLE</p>
+
+              )
+          }
         </div>
       </div>
     </>
