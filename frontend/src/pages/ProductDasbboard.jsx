@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import API from "../services/api";
+import API from "../services/API";
 import { FadeLoader } from "react-spinners";
+import UserNavbar from "@/components/UserNavbar";
 
 export default function AdminProduct() {
   const [displayedItems, setDisplayedItems] = useState([]);
@@ -54,6 +55,7 @@ export default function AdminProduct() {
 
   return (
     <>
+    <UserNavbar/>
       <div className="flex gap-2 justify-center mt-4">
         <div className="w-120">
           <Input
