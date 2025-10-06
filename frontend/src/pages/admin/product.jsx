@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import API from "@/services/api";
+import API from "@/services/API";
 import { FadeLoader } from "react-spinners";
 
 import {
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useEffect } from "react";
+import LoggedNavbar from "@/components/LoggedNavbar";
 
 export default function AdminProduct() {
   //initial state of new product
@@ -156,6 +157,7 @@ export default function AdminProduct() {
 
   return (
     <div className="min-h-screen">
+      <LoggedNavbar/>
       <div className="flex gap-2 justify-center mt-4">
         <div className="w-120">
           <Input
