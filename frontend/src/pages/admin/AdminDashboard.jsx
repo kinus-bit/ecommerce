@@ -1,11 +1,13 @@
 import { React } from 'react'
 import { Card ,CardHeader,CardTitle,CardContent,CardFooter } from "@/components/ui/card"
 import { Progress } from '@/components/ui/progress';
+import LoggedNavbar from '@/components/LoggedNavbar';
 
 
 export default function AdminDashboard(){
     return(
         <>
+        <LoggedNavbar/>
         <h1 className="text-3xl font-bold text-center  ">Welcome Back Admin!</h1>
         <p>orders</p>
         <div className="flex space-x-6 justify-center" >
