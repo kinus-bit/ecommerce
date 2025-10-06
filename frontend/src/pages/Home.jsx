@@ -2,7 +2,8 @@ import { React } from "react";
 import { useState,useEffect} from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import API from "@/services/api";
+import API from "@/services/API";
+import Navigation from "@/components/Navigation";
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
     }, []);
   return (
     <>
+    <Navigation/>
       <div className="flex justify-around">
         <div className="">
           <h1 className="text-[30px]">our latest collection</h1>
