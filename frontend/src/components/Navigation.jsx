@@ -63,8 +63,12 @@ export default function Navigation() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex space-x-3">
-          <Button>signup</Button>
-          <Button>Login</Button>
+          <Button>
+            <Link to="/register">signup</Link>
+          </Button>
+           <Button>
+            <Link to="/login">Login</Link>
+          </Button>
         </div>
       </div>
     </nav>
