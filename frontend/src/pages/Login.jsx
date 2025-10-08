@@ -30,6 +30,7 @@ const Login = () => {
       
     } catch (error) {
       setError(error || "Login failed!!");
+      alert("Login failed");
     }
     finally{
       setLoading(false);
@@ -42,11 +43,11 @@ const Login = () => {
           <h1 className=" flex justify-center items-center font-bold text-[25px] ">Login</h1>
            <div>
             <label htmlFor="email" className="block font-semibold text-[18px] mb-2">Email</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"/>
+            <input type="email" autoComplete="off" name="email" value={formData.email} onChange={handleChange} className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"/>
           </div>
            <div className="mb-4">
             <label htmlFor="password" className="block font-semibold text-[18px] mb-2">Password</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"/>
+            <input type="password" autoComplete="off"  name="password" value={formData.password} onChange={handleChange} className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"/>
           </div>
          {loading ?(<div className="flex justify-center mb-4">
             <button className="border-blue-400 w-full h-10 bg-blue-400 rounded-md
