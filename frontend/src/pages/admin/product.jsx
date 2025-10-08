@@ -69,7 +69,7 @@ export default function AdminProduct() {
       const res = await API.post("/products/create", payload);
       setDisplayedItems((prev) => [res.data, ...prev]);
     } catch (error) {
-      res.status(400).json({ message: "could not  create a product" });
+      console.error("could not create product:",error);
     }
   };
 
