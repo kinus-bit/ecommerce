@@ -53,8 +53,24 @@ export default function Navigation() {
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
+
+              <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link
+                  to="/users"
+                  className=" text-xl font-semibold text-gray-700 hover:text-blue-600 transition "
+                >
+                  Users
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
           </NavigationMenuList>
+
+          
         </NavigationMenu>
+
+        
         <div className="flex space-x-3">
           <Button onClick={logout}>Logout</Button>
         </div>
