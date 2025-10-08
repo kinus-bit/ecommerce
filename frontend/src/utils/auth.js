@@ -25,9 +25,15 @@ export const isAdmin = () => {
     return getUserRole() === 'admin';
 };
 
-export const isDeveloper = () => {
+export const isSeller = () => {
+    return getUserRole() === 'seller'
+};
+
+export const isBuyer = () => {
     return getUserRole() === 'user'
 };
+
+
 
 export const getUsername = () => {
     const user = getUserFromToken();
