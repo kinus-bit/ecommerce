@@ -52,6 +52,7 @@ const Signup = () => {
              mb-2">Username</label>
             <input
             name="name"
+            autoComplete="off"
               type="text"
               className=" h-10 w-full focus:ring-1 
             focus:ring-blue-400 border border-gray-200 focus:border-blue-400 
@@ -67,6 +68,7 @@ const Signup = () => {
             mb-2">Email</label>
             <input
             name="email"
+            autoComplete="off"
               type="Email"
               className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border 
             border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"
@@ -80,6 +82,7 @@ const Signup = () => {
               className="block font-semibold text-[18px] mb-2">Password</label>
             <input
             name="password"
+            autoComplete="off"
               type="password"
               className=" h-10 w-full  focus:ring-1 focus:ring-blue-400 border
               border-gray-200 focus:border-blue-400 outline-none rounded-md mb-4"
