@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
     //manage authorization
     role: {
       type: String,
-      enum: ["admin", "user"],
+      enum: ["admin", "user","seller"],
       default: "user",
     },
   },
