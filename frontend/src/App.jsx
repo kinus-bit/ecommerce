@@ -11,6 +11,7 @@ import RoleDashboard from './pages/RoleDashboard';
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminOrder from "./pages/admin/order"
 import AdminProduct from "./pages/admin/product"
+import AdminUser from "./pages/admin/user";
 
 export default function App() {
   return (
@@ -51,7 +52,15 @@ export default function App() {
             </ProtectedRoute>
 
           } />
+          <Route path='/users'
+          element={
+            <ProtectedRoute>
+              <AdminUser />
+            </ProtectedRoute>
+
+          } />
       </Routes>
+      
       <Footer className="justify-center items-center" />
     </div>
   );
