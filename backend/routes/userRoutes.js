@@ -18,7 +18,7 @@ router.post('/login',loggingUser);
 router.post('/signup',createUser);
 
 //updating a user
-router.put('/update/:id',Protect,updateUser);
+router.put('/update/:id',Protect,admin,updateUser);
 
 //deleting a user
 router.delete('/delete/:id',Protect,admin,deleteUser);
