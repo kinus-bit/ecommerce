@@ -69,7 +69,7 @@ export default function AdminDashboard(){
                     <CardHeader>
                         <CardTitle>order status</CardTitle>
                     </CardHeader>
-                    <CardContent>ompleted</CardContent>
+                    <CardContent>completed</CardContent>
                     
                 </Card>
             </div>
@@ -78,7 +78,7 @@ export default function AdminDashboard(){
                     <CardHeader>
                         <CardTitle>Top Selling Products</CardTitle>
                     </CardHeader>
-                    <CardContent>ompleted</CardContent>
+                    <CardContent>completed</CardContent>
                 </Card>
             </div>
         </div>
