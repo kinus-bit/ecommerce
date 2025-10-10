@@ -12,12 +12,18 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminOrder from "./pages/admin/order"
 import AdminProduct from "./pages/admin/product"
 import AdminUser from "./pages/admin/user";
+import SellerDashboard from "./pages/seller/SellerDashboard";
+import SellerOrder from "./pages/seller/order1"
+import SellerProduct from "./pages/seller/product1"
+// import Layouts from './components/layouts';
+
 
 export default function App() {
   return (
     <div >
 
       <Routes>
+        {/* <Route element={<Layouts/>}> */}
         <Route path='/' element={<HomePage />} />
         <Route path='/About' element={<AboutPage />} />
         <Route path='/feedback' element={<FeedbackPage />} />
@@ -59,6 +65,28 @@ export default function App() {
             </ProtectedRoute>
 
           } />
+          <Route path='/sellerhome'
+          element={
+            <ProtectedRoute>
+              <SellerDashboard />
+            </ProtectedRoute>
+
+          } />
+        <Route path='/sellerorder'
+          element={
+            <ProtectedRoute>
+              <SellerOrder />
+            </ProtectedRoute>
+
+          } />
+        <Route path='/sellerproduct'
+          element={
+            <ProtectedRoute>
+              <SellerProduct />
+            </ProtectedRoute>
+
+          } />
+          {/* </Route> */}
       </Routes>
       
       <Footer className="justify-center items-center" />
