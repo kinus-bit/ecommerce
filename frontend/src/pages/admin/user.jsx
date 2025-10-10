@@ -103,12 +103,13 @@ const User = () => {
                                             </DialogHeader>
                                             <label htmlFor="Role">Role</label>
                                             <Input 
-                                            value={person.role} />
+                                            name="role"
+                                            value={editingRole ?.role || " " }/>
                                             <DialogFooter>
                                                 <DialogClose>
                                                     Cancel
                                                 </DialogClose>
-                                                <Button type="submit">Save</Button>
+                                                <Button type="submit" onClick={HandleSaveRole}>Save</Button>
                                             </DialogFooter>
                                         </form>
                                     </DialogContent>
