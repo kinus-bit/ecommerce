@@ -84,7 +84,7 @@ export default function AdminProduct() {
       await API.delete(`products/delete/${id}`);
       setDisplayedItems((prev) => prev.filter((t) => t._id !== id));
     } catch (error) {
-      res.status(400).json({ message: "could not delete the product" });
+      console.log("Could not delete the product:",error)
     }
   };
 
