@@ -14,7 +14,7 @@ const {
 
 
 //getting all
-router.get("/all", Protect,getProducts);
+router.get("/all",getProducts);
 
 //getting own products(seller)
 router.get("/own",Protect,getOwnProducts);
