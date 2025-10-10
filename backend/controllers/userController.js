@@ -10,6 +10,9 @@ exports.createUser = async (req, res) => {
     if ((!name, !email, !password)) {
       return res.status(400).json({ message: "All fields are required!!" });
     }
+
+    //this says find one user document in the database 
+    // whose email matches the provided email
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "User already exists!!" });
@@ -20,6 +23,7 @@ exports.createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     //create user to database
+    //create to database with the provided record,save and return the exact record.
     const user = await User.create({ name, email, password: hashedPassword });
     if (user) {
       return res.status(201).json({
@@ -40,6 +44,10 @@ exports.createUser = async (req, res) => {
 exports.loggingUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    if(!email || !password ){
+      return res.status(400).json({message: "Enter All fields!!"})
+    }
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -93,7 +101,10 @@ exports.getOneUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const userExists = await User.findOne({ _id: id });
+
+    //use of query condition({_id:id})- this checks if there
+    //is a document with _id that matches id from paramater request.
+    const userExists = await User.findOne({_id:id});
     if (!userExists) {
       return res.status(404).json({ message: "User Not Found" });
     }
@@ -109,8 +120,10 @@ exports.updateUser = async (req, res) => {
 //deleting a user(admin priviledge)
 exports.deleteUser = async (req, res) => {
   try {
+
+    //id from parameter request.
     const id = req.params.id;
-    const userExists = await User.findOne({ _id: id });
+    const userExists = await User.findOne({_id:id});
     if (!userExists) {
       return res.status(404).json({ message: "User Not Found" });
     }
