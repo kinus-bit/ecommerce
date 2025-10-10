@@ -62,12 +62,12 @@ export default function Home() {
                 <CardContent className="p-0">
                   <img
                     src={item.productUrl}
-                    className="h-48 w-full object-cover rounded-md"
+                    className="h-48 w-full object-cover object-bottom  rounded-md"
                   ></img>
                 </CardContent>
                 <CardFooter className="flex flex-col">
                   <p>{item.productName}</p>
-                  <p>{item.productPrice}</p>
+                  <p>${item.productPrice}</p>
                   <Button>see product</Button>
                 </CardFooter>
               </Card>

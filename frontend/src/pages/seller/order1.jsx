@@ -1,9 +1,9 @@
 import { Table , TableHeader,TableHead , TableBody , TableRow , TableCell} from "@/components/ui/table";
-import LoggedNavbar from "@/components/LoggedNavbar";
+import SellerNavbar from "@/components/SellerNavbar";
 export default function AdminOrders(){
     return(
         <div className="bg-gray-500 text-black min-h-screen">
-            <LoggedNavbar/>
+            <SellerNavbar/>
         <h1>admin orders</h1>
         <Table>
             <TableHeader>

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useEffect } from "react";
-import LoggedNavbar from "@/components/LoggedNavbar";
+import SellerNavbar from "@/components/SellerNavbar";
 
 export default function AdminProduct() {
   //initial state of new product
@@ -157,7 +157,7 @@ export default function AdminProduct() {
 
   return (
     <div className="min-h-screen">
-      <LoggedNavbar/>
+      <SellerNavbar/>
       <div className="flex gap-2 justify-center mt-4">
         <div className="w-120">
           <Input

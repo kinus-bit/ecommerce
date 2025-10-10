@@ -229,13 +229,13 @@ export default function AdminProduct() {
       </div>
 
       <div>
-        <div className="flex  flex-wrap space-x-6 justify-center">
+        <div className="container mx-auto grid grid-cols-3 gap-6">
           {loading ? (<FadeLoader className="justify-center items-center min-h-screen" />) :
             error ? (<h2 className="text-red-500 text-2xl">{error}</h2>) :
               displayedItems.length > 0 ? (
                 displayedItems.map((item) => (
                   <div key={item._id}>
-                    <Card className="flex h-90 w-80 p-0 mb-4">
+                    <Card className="flex h-90 w-full p-0 mb-2">
                       <CardContent className="p-0">
                         <img
                           src={item.productUrl}
