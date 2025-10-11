@@ -47,8 +47,7 @@ export default function AdminProduct() {
       const res = await API.get("/products/all");
       setDisplayedItems(res.data);
       setAllItems(res.data);
-      setError("")
-
+      setError("");
 
     } catch (error) {
       setError("Failed to fetch products")
@@ -88,7 +87,7 @@ export default function AdminProduct() {
     }
   };
 
-  //handle editing/updating a product
+  //handle editing/updating a product(in the dialog)
   function handleEditChange(e) {
     const { name, value } = e.target;
     setEditingItem((prevItem) => ({
@@ -229,13 +228,13 @@ export default function AdminProduct() {
       </div>
 
       <div>
-        <div className="container mx-auto grid grid-cols-3 gap-6">
+        <div className=" container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
           {loading ? (<FadeLoader className="justify-center items-center min-h-screen" />) :
             error ? (<h2 className="text-red-500 text-2xl">{error}</h2>) :
               displayedItems.length > 0 ? (
                 displayedItems.map((item) => (
                   <div key={item._id}>
-                    <Card className="flex h-90 w-full p-0 mb-2">
+                    <Card className="flex h-90 w-full p-0">
                       <CardContent className="p-0">
                         <img
                           src={item.productUrl}
@@ -245,7 +244,7 @@ export default function AdminProduct() {
                       <CardFooter className="flex flex-col">
                         <p>{item.productName}</p>
                         <p>${item.productPrice}</p>
-                        <div className="flex space-x-11 mt-2">
+                        <div className="flex space-x-11 h-20 w-20 mt-2">
                           <Dialog
                             open={isUpdateDilaogOpen}
                             onOpenChange={setIsUpdateDilaogOpen}

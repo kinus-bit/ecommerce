@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 const User = () => {
     const[user, setUser] = useState([]);
     const[editingRole , setEditingRole] = useState(null);
-    const[ openDialog , setOpenDialog] = useState(false);
+    const[openDialog , setOpenDialog] = useState(false);
     const userRole = getUserRole();
 
     useEffect(() => {
@@ -30,16 +30,26 @@ const User = () => {
             };
             fetchUsers();
 
-            //updating user role
-            const updateRole = async (id , payload ) =>{
-                await API.put(`users/update/${id}`,payload);
-            };
+           
 
         }
     }, [userRole]);
 
+    
+         //updating user role
+            const  updateRole = async (id , payload ) =>{
+                await API.put(`users/update/${id}`,payload);
+            };
+
+            const deleteRole = async(id) =>{
+                await API.delete(`users/delete/${id}`);
+                setUser((prev) => prev.filter((t) => t._id !== id));
+
+            } 
+  
+
     //handling editing role
-    const handleEditingRole = () =>{
+    const handleEditingRole = (e) =>{
         const {name,value} = e.target;
         setEditingRole((prevItems) =>({
             ...prevItems,
@@ -53,8 +63,8 @@ const User = () => {
         if (!editingRole) return;
         await updateRole(editingRole._id, editingRole);
         setUser((prevUsers) => 
-            prevUsers.map((user) => 
-                user._id === editingRole._id ? editingRole : user
+            prevUsers.map((person) => 
+                person._id === editingRole._id ? editingRole : person
             )
         );
         setEditingRole(null);
@@ -91,7 +101,7 @@ const User = () => {
                                 onOpenChange={setOpenDialog}
                                 >
                                     <DialogTrigger>
-                                        <Button onClick={() => setEditingRole(user)} >UpdateRole</Button>
+                                        <Button onClick={() => setEditingRole(person)} >UpdateRole</Button>
                                     </DialogTrigger>
                                     <DialogContent>
                                         <form onSubmit={HandleSaveRole}>
@@ -104,7 +114,8 @@ const User = () => {
                                             <label htmlFor="Role">Role</label>
                                             <Input 
                                             name="role"
-                                            value={editingRole ?.role || " " }/>
+                                            value={editingRole?.role || " "}
+                                            onChange={handleEditingRole}/>
                                             <DialogFooter>
                                                 <DialogClose>
                                                     Cancel
@@ -122,6 +133,9 @@ const User = () => {
                                     </DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
+                                            <DialogTitle>
+                                                Deleting user
+                                            </DialogTitle>
                                             <DialogDescription>
                                                 You are sure to delete {person.name}?
                                             </DialogDescription>
@@ -130,7 +144,7 @@ const User = () => {
                                             <DialogClose>
                                                 Cancel
                                             </DialogClose>
-                                            <Button>DELETE</Button>
+                                            <Button onClick={ () => deleteRole(person._id)}>DELETE</Button>
                                         </DialogFooter>
                                     </DialogContent>
                                 </Dialog>

@@ -2,9 +2,10 @@ import { React } from 'react'
 import { Card ,CardHeader,CardTitle,CardContent,CardFooter } from "@/components/ui/card"
 import { Progress } from '@/components/ui/progress';
 import LoggedNavbar from '@/components/LoggedNavbar';
-
+import API from '@/services/API';
 
 export default function AdminDashboard(){
+
     return(
         <>
         <LoggedNavbar/>

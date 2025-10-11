@@ -14,7 +14,8 @@ import AdminProduct from "./pages/admin/product"
 import AdminUser from "./pages/admin/user";
 import SellerDashboard from "./pages/seller/SellerDashboard";
 import SellerOrder from "./pages/seller/order1"
-import SellerProduct from "./pages/seller/product1"
+import SellerProduct from "./pages/seller/product1";
+import Mycart from "./components/cart";
 // import Layouts from './components/layouts';
 
 
@@ -86,10 +87,17 @@ export default function App() {
             </ProtectedRoute>
 
           } />
+           <Route path='/mycart'
+          element={
+            <ProtectedRoute>
+              <Mycart />
+            </ProtectedRoute>
+
+          } />
           {/* </Route> */}
       </Routes>
       
-      <Footer className="justify-center items-center" />
+      <Footer className="justify-center items-center " />
     </div>
   );
 }

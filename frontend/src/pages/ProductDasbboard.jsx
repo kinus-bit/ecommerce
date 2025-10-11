@@ -13,6 +13,22 @@ export default function AdminProduct() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //making counter persistent even after refreshing the page.
+  const[counter ,setCounter ] = useState( () => {
+    //get saved counter from localstorage on first render
+    const saved = localStorage.getItem("cartCounter");
+    return saved !== null ? parseInt(saved,10) : 0;
+  });
+
+  //passing counter shadows the state
+  //update localstorage whenever counter changes
+  const handleAddToCart = () => {
+    setCounter(prev =>{
+      const newCount = prev + 1;
+      localStorage.setItem("cartCounter",newCount.toString());
+      return newCount;
+    });
+  };
   //loading items from database
   const load = async (req, res) => {
     try {
@@ -55,8 +71,8 @@ export default function AdminProduct() {
 
   return (
     <>
-    <UserNavbar/>
-      <div className="flex gap-2 justify-center mt-4">
+    <UserNavbar counter={counter} />
+      <div className="flex gap-2 justify-center mt-4 ">
         <div className="w-120">
           <Input
             type="text"
@@ -68,20 +84,21 @@ export default function AdminProduct() {
         <div>
           <Button>Search</Button>
         </div>
+     
       </div>
       <div className=" flex justify-start mt-5 ml-20">
         <h1 className="text-black-500 font-semibold text-2xl">products</h1>
       </div>
 
       <div>
-        <div className="flex  flex-wrap space-x-6 justify-center">
+        <div className="container mx-auto grid grid-cols-3 gap-2">
           {loading ? (<FadeLoader />) :
             error ? (<h2 className="text-red-500 text-2xl">
               {error}</h2>) :
               displayedItems.length > 0 ? (
                 displayedItems.map((item) => (
                   <div key={item._id}>
-                    <Card className="flex h-90 w-80 p-0 mb-4">
+                    <Card className="flex h-90 w-full p-0">
                       <CardContent className="p-0">
                         <img
                           src={item.productUrl}
@@ -91,7 +108,10 @@ export default function AdminProduct() {
                       <CardFooter className="flex flex-col">
                         <p>{item.productName}</p>
                         <p>${item.productPrice}</p>
-                        <Button>see product</Button>
+                        <div className="flex w-full justify-around">
+                          <div><Button>see product</Button></div>
+                          <div><Button onClick={handleAddToCart} >addtocart</Button></div>
+                        </div>
                       </CardFooter>
                     </Card>
                   </div>
