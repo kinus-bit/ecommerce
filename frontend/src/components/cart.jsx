@@ -18,9 +18,9 @@ export default function Cart() {
     return (
         <div className="min-h-screen grid grid-cols-2 relative   ">
             <div>
-                <h1 className="m-3 text-[35px] font-bold">My Cart</h1>
+                <h1 className="ml-3 fixed  w-full bg-zinc-50 top-0 text-[35px] font-bold">My Cart</h1>
                 <hr />
-                <div className="w-full">
+                <div className="w-full mt-10">
                     {displayProducts.map((product) => (
                         <div key={product._id}>
                             <div className=" grid grid-cols-3 ">
